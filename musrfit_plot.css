@@ -1,0 +1,262 @@
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#tableDiv {
+    height: 200px;
+    width: 100;
+    overflow-y: auto;
+    margin: 0 auto;
+    resize: both;
+}
+
+table.dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid;
+    font-size: 0.7em;
+}
+
+table.dataTable th, td {
+    border: 1px solid black;
+    padding: 2px;
+    text-align: left;
+}
+
+table.dataTable tr:first-child td {
+    vertical-align: top;
+    font-weight: bold;
+    background-color: #ddd;
+    position: sticky;
+    top: 0px;
+}
+
+.selection-container {
+    gap: 10px;
+    width: 100%
+}
+
+.select-label {
+    /* Display labels on a new line */
+    display: inline-block;
+}
+
+.selection-bar {
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 13px;
+    width: 134px; 
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.selection-bar:hover,
+.selection-bar:focus {
+    border-color: #0056b3;
+    outline: none;
+    box-shadow: 0 0 5px #0056b3;
+}
+
+/* Additional style for showing the selection containers after file is loaded */
+#selectionContainer.show {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Additional style for the checkbox to show it after file is loaded */
+#linePlotCheckbox.show {
+    display: inline-block;
+}
+
+/* For selected X column */
+.selected-x {
+    background-color: #ffd54f;
+}
+
+/* For selected Y column */
+.selected-y {
+    background-color: #64b5f6;
+}
+/* For selected Error column */
+.selected-error {
+    background-color: #37ad6d;
+}
+
+/* For X-axis label with fixed background color */
+#xLabel {
+    background-color: #ffd54f;
+}
+
+/* For Y-axis label */
+#yLabel {
+    background-color: #64b5f6;
+}
+
+#addPlotDivButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 50%;
+    border: 2px solid #444;
+    background-color: #f9f9f9;
+    color: #444;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#addPlotDivButton:hover {
+    background-color: #444;
+    color: #f9f9f9;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px; /* Set the width to your desired size */
+    height: 20px; /* Set the height to your desired size */
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1; /* Add a z-index to make sure it's visible over other elements */
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    border-radius: 50%;
+    transition: background-color 0.2s, border-radius 0.2s;
+}
+
+/* Styles for the close button on hover */
+.close-button:hover {
+    background-color: #ff5f31;
+    border-radius: 50%;
+}
+
+.close-button-yAxis {
+    width: 20px; /* Set the width to your desired size */
+    height: 20px; /* Set the height to your desired size */
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    border-radius: 50%;
+    transition: background-color 0.2s, border-radius 0.2s;
+}
+
+/* Styles for the close button on hover */
+.close-button-yAxis:hover {
+    background-color: #ff5f31;
+    border-radius: 50%;
+}
+
+
+.float-button {
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    width: 20px; /* Set the width to your desired size */
+    height: 20px; /* Set the height to your desired size */
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1; /* Add a z-index to make sure it's visible over other elements */
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    border-radius: 50%;
+    transition: background-color 0.2s, border-radius 0.2s;
+}
+.float-button:hover {
+    background-color: #ff5f31;
+    border-radius: 50%;
+}
+
+.add-button {
+    width: 30px; /* Set the width to your desired size */
+    height: 30px; /* Set the height to your desired size */
+    font-size: 23px;
+    cursor: pointer;
+    z-index: 1; /* Add a z-index to make sure it's visible over other elements */
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: 5px;
+    transition: background-color 0.2s, border-radius 0.2s;
+}
+.add-button:hover {
+    background-color: #f6f6f6;
+    border-radius: 50%;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+/* Example CSS for Plotly plot container */
+.plotDivContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust as needed for spacing between divs */
+}
+
+.resizable {
+    margin: 5px;
+    position: relative;
+    padding: 5px;
+    border: 1px solid #007bff;
+    border-radius: 3px;
+    background-color: #fff;
+    min-height: 400px;
+    font-size: 13px;
+    width: 47%;
+    display: flex;
+    resize: both; /* Enable resizing of divs */
+    overflow: auto; /* Enable scrolling within the div */
+}
+
+/* Example CSS for Plotly plot within resizable div */
+.resizable .plotly {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.resizable > * {
+    flex: 1;
+}
+
+.resizable > img {
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+}
+
+.plotDivs {
+    min-width: 85%;
+    padding: 22px 0px 0px 0px;
+}

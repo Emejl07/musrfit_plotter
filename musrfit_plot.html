@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>musrfit plotter</title>
+    <link rel="icon" type="image/x-icon" href="musrfit_plot_icon.ico">
+    <!-- Include Plotly from a CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="musrfit_plot.css">
+  </head>
+
+  <body>
+    <h1>musrfit plotter</h1>
+    <div>
+      <input type="file" id="fileInput"><button style="float: right;" type="button" onclick="resetFileInput();">Clear all</button>
+    </div>
+    <br>
+    <div id="tableDiv"></div>
+    <br>
+    <div id="plotDivContainer">
+      <!-- Plot divs will be dynamically added here -->
+    </div>
+
+    <!-- "+" button to add new plot divs -->
+    <button id="addPlotDivButton" style="display:none;" onclick="addPlotDiv()">+</button>
+
+    <!-- Make sure to load .js file after the HTML elements have been created. -->
+    <script src="musrfit_plot.js"></script>
+  </body>
+</html>

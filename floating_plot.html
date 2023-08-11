@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Floating Plot Window</title>
+    <link rel="icon" type="image/x-icon" href="musrfit_plot_icon.ico">
+    <!-- Include Plotly from a CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+      body {
+          margin: 0;
+          overflow: 110%;
+      }
+
+      #plotDiv {
+          width: 100%;
+          height: 95vh;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Create a div to hold the plot -->
+    <div id="plotDiv"></div>
+    <div><label class="select-label" for="floatingTypeSelect">Line Type:</label>
+      <select class="selection-bar" id="floatingTypeSelect" onchange="floatingChangeType();">
+        <option value="markers">Scatter</option>
+        <option value="line">Line</option>
+        <option value="lines+markers">Lines + Marker</option>
+      </select>
+      <label class="select-label" for="floatinglineShapeSelect">Line Shape:</label>
+      <select class="selection-bar" id="floatinglineShapeSelect" onchange="floatingChangeType();">
+	<option value="spline">Spline</option>
+	<option value="linear">Linear</option>
+	<option value="vhv">vhv</option>
+	<option value="hvh">hvh</option>
+	<option value="vh">vh</option>
+	<option value="vh">hv</option>
+      </select>
+      <label class="checkbox-label" for="floatingErrorBarCheckbox">Show Error Bars</label>
+      <input type="checkbox" id="floatingErrorBarCheckbox" onchange="floatingChangeType();" checked>
+    </div>
+    <script>
+      // Retrieve the plot data and layout from localStorage
+      let plotData = JSON.parse(localStorage.getItem('plotData'));
+      let layout = JSON.parse(localStorage.getItem('layout'));
+
+      // Render the plot using Plotly.newPlot
+      Plotly.newPlot('plotDiv', plotData, layout, { responsive: true, editable: true });
+
+      function floatingChangeType() {
+         // Retrieve the plot data and layout from localStorage
+         let plotData = JSON.parse(localStorage.getItem('plotData'));
+         let layout = JSON.parse(localStorage.getItem('layout'));
+
+         plotData[0].line.shape = document.getElementById('floatinglineShapeSelect').value;
+         plotData[0].mode = document.getElementById('floatingTypeSelect').value;
+         plotData[0].error_y.visible = document.getElementById("floatingErrorBarCheckbox").checked;
+         // Render the plot using Plotly.newPlot
+         Plotly.newPlot('plotDiv', plotData, layout, { responsive: true, editable: true });
+      }
+    </script>
+  </body>
+
+</html>
